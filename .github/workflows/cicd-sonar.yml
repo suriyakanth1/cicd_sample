@@ -1,16 +1,19 @@
+name: Publish Docker image
 
-name: SonarQube Integration
-  sonarqube:
-    name: SonarQube Integration
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-      with:
+on:
+   workflow_dispatch
+
+jobs:
+    sonarqube:
+      name: SonarQube Integration
+      runs-on: ubuntu-latest
+      steps:
+       - uses: actions/checkout@v2
+         with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: squ_e9cd25567d73b8d210d01850a849b736935980e5
-        SONAR_HOST_URL: http://localhost:9000/
+            fetch-depth: 0
+       - name: SonarQube Scan
+         uses: sonarsource/sonarqube-scan-action@master
+         env:
+               SONAR_TOKEN: squ_e9cd25567d73b8d210d01850a849b736935980e5
+               SONAR_HOST_URL: http://localhost:9000/
