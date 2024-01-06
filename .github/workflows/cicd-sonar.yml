@@ -12,5 +12,5 @@ name: SonarQube Integration
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_TOKEN: squ_e9cd25567d73b8d210d01850a849b736935980e5
+        SONAR_HOST_URL: http://localhost:9000/
