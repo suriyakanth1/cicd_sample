@@ -4,6 +4,7 @@ on:
 
 jobs:
     sonarqube:
+    
       name: SonarQube Integration
       runs-on: ubuntu-latest
       steps:
@@ -16,3 +17,12 @@ jobs:
          env:
                SONAR_TOKEN: squ_e9cd25567d73b8d210d01850a849b736935980e5
                SONAR_HOST_URL: http://localhost:9000/
+       - uses: actions/github-script@v6
+         with:
+          script: |
+            import * as core from '@actions/core';
+
+            const logs = await core.getWorkflowLogs();
+            for (const log of logs) {
+              console.log(log.text); // Output each log line as text
+            }
