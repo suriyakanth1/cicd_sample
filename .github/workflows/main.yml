@@ -15,10 +15,7 @@ jobs:
         with:
           username: .*/
           password: dckr_pat_xoopPZOBx4S5rCzv45eFWnLoEXA
-          on_success:
-             echo "Docker operations succeeded!"
-          on_fail:
-             echo "Docker operations failed!"
+          
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
