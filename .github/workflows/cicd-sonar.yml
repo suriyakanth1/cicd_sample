@@ -17,12 +17,4 @@ jobs:
          env:
                SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
                SONAR_HOST_URL: http://158.220.107.63:9000/
-       - uses: actions/github-script@v6
-         with:
-          script: |
-            import * as core from '@actions/core';
-
-            const logs = await core.getWorkflowLogs();
-            for (const log of logs) {
-              console.log(log.text); // Output each log line as text
-            }
+       
