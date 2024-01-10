@@ -1,13 +1,14 @@
-name: Publish Docker image
+
+name: Docker image
 
 on:
-   workflow_dispatch
+  workflow_dispatch:
 
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
-    steps:
+  build:
+     name: Push Docker image to Docker Hub
+     runs-on: ubuntu-latest
+     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
       - name: Log in to Docker Hub
@@ -29,3 +30,36 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+
+  opensource-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/maven@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  code-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/maven@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test
+
+#---------------- release
+  release:
+    needs : [build]
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@master
+        - name: SonarQube Scan
+          uses: sonarsource/sonarqube-scan-action@master
+    env:
+         SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
+         SONAR_HOST_URL: http://158.220.107.63:9000/
