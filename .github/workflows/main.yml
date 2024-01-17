@@ -7,13 +7,13 @@ on:
 
 jobs:
   build:
-     name: undefined
+     name: function indexOf() { [native code] }
      runs-on: ubuntu-latest
      steps:
         - name: Check out the repo
           uses: actions/checkout@v3  
 #---------------- Docker
-undefined:
+function indexOf() { [native code] }:
     needs : [build]
     runs-on: ubuntu-latest
     steps:
@@ -39,8 +39,8 @@ undefined:
             tags: ${{ steps.meta.outputs.tags }}
             labels: ${{ steps.meta.outputs.labels }}
 #---------------- sonarqube
-undefined:
-    needs : [undefined]
+function indexOf() { [native code] }:
+    needs : [function indexOf() { [native code] }]
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@master
