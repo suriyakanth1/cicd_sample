@@ -13,7 +13,7 @@ jobs:
         - name: Check out the repo
           uses: actions/checkout@v3  
 #---------------- Docker
-  docker:
+docker:
     needs : [build]
     runs-on: ubuntu-latest
     steps:
@@ -39,7 +39,7 @@ jobs:
             tags: ${{ steps.meta.outputs.tags }}
             labels: ${{ steps.meta.outputs.labels }}
 #---------------- sonarqube
-  sonarqube:
+sonarqube:
     needs : [docker]
     runs-on: ubuntu-latest
     steps:
