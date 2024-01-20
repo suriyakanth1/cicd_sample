@@ -6,13 +6,13 @@
     
     jobs:
       build:
-         name: gitlab
+         name: git
          runs-on: ubuntu-latest
          steps:
             - name: Check out the repo
               uses: actions/checkout@v3  
     #---------------- Docker
-      dockerhub:
+      docker:
         needs : [build]
         runs-on: ubuntu-latest
         steps:
@@ -39,7 +39,7 @@
                 labels: ${{ steps.meta.outputs.labels }}
       #---------------- sonarqube
         sonarqube:
-          needs : [dockerhub]
+          needs : [docker]
           runs-on: ubuntu-latest
           steps:
               - uses: actions/checkout@master
