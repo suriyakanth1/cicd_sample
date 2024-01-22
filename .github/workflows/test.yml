@@ -1,5 +1,5 @@
 
-    name: modelpipeline
+    name: cicdworkflowpipeline
     
     on:
       workflow_dispatch:
@@ -37,8 +37,8 @@
                 push: true
                 tags: ${{ steps.meta.outputs.tags }}
                 labels: ${{ steps.meta.outputs.labels }}
-      #---------------- sonarqube
-        sonarqube:
+    #---------------- sonarqube
+      sonarqube:
           needs : [docker]
           runs-on: ubuntu-latest
           steps:
