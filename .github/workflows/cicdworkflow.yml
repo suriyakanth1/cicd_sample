@@ -1,5 +1,5 @@
 
-    name: cicdworkflow
+    name: cicd
     
     on:
       workflow_dispatch:
