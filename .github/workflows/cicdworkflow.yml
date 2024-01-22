@@ -1,8 +1,7 @@
 
     name: cicd
-    
     on:
-      workflow_dispatch:
+                      workflow_dispatch:
     
     jobs:
       build:
