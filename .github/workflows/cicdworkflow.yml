@@ -1,4 +1,4 @@
-name: [object Promise]
+name: undefined
 on:
           workflow_dispatch:
 
