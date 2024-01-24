@@ -22,7 +22,7 @@ on:
               uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
               with:
                 username: suriyakanth1
-                password: undefined
+                password: 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
               
             - name: Extract metadata (tags, labels) for Docker
               id: meta
