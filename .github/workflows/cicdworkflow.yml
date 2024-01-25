@@ -38,7 +38,7 @@
       
 
       #---------------- sonarqube
-      sonarqube:
+      SONARQUBE:
           needs : [docker]
           runs-on: ubuntu-latest
           steps:
