@@ -1,14 +1,14 @@
 name: main
 on:
-                                   workflow_dispatch:
+                                workflow_dispatch:
 
-            jobs:
-            build:
-            name: GITHUB
-            runs-on: ubuntu-latest
-            steps:
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
                 - name: Check out the repo
-                    uses: actions/checkout@v3  
+                  uses: actions/checkout@v3  
             
 
             #---------------- Docker
