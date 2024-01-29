@@ -1,5 +1,5 @@
        name: main
-         on:
+        on:
             workflow_dispatch:
 
         jobs:
