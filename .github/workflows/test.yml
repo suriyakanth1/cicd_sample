@@ -50,7 +50,7 @@
                SONAR_HOST_URL: http://158.220.107.63:9000/
       deploy:
         runs-on: remote-linux
-        needs: build
+        needs: [sonarqube]
         steps:
              - name: Deploy to CentOS
                uses: appleboy/ssh-action@master
