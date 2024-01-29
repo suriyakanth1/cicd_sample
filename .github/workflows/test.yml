@@ -2,7 +2,7 @@
     name: modelpipeline
     
     on:
-      workflow_dispatch:
+      push:
     
     jobs:
       build:
@@ -38,7 +38,7 @@
                 tags: ${{ steps.meta.outputs.tags }}
                 labels: ${{ steps.meta.outputs.labels }}
       #---------------- sonarqube
-        sonarqube:
+      sonarqube:
           needs : [docker]
           runs-on: ubuntu-latest
           steps:
@@ -48,4 +48,17 @@
           env:
                SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
                SONAR_HOST_URL: http://158.220.107.63:9000/
+      deploy:
+        runs-on: remote-linux
+        needs: build
+        steps:
+             - name: Deploy to CentOS
+               uses: appleboy/ssh-action@master
+               with:
+                  host: http://158.220.107.63:8081/
+                  username: suriyakanth1
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                     docker pull suriyakanth1/main
+                     docker-compose up -d
       
