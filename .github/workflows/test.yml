@@ -54,7 +54,7 @@
             steps:
                - name: Deploy to CentOS VM
                  run: |
-                    ssh root@158.220.107.63 "cd /projects && node index.js"
+                    ssh root@158.220.107.63 "cd /projects && npm start"
             env:
                SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       
