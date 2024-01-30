@@ -48,6 +48,6 @@
                 - name: SonarQube Scan
                   uses: sonarsource/sonarqube-scan-action@master
             env:
-                 SONAR_TOKEN: undefined
+                 SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
                  SONAR_HOST_URL: http://158.220.107.63:9000/
         
