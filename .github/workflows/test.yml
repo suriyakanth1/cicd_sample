@@ -54,7 +54,7 @@
             steps:
                - name: Deploy to CentOS VM
                  run: |
-                    ssh root@158.220.107.63 "cd /projects && npm install && pm2 restart dcimagebuild"
+                    ssh root@158.220.107.63 "cd /projects && node index.js"
             env:
                SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       
