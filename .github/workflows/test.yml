@@ -64,7 +64,7 @@
                   port: 22
 
               - name: Pull Docker Image
-                run: suriyakanth1/dockerimagebuild:main
+                run: docker pull suriyakanth1/dockerimagebuild:main
                 env:
                   DOCKER_USERNAME: suriyakanth1
                   DOCKER_PASSWORD: dckr_pat_LSDYW7uqWPPYvQOrLJFEbl7oPjM
