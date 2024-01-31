@@ -71,7 +71,7 @@
 
               - name: Run Docker Container
                 run: |
-                   docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:test
+                   docker run --rm -p 3001:3001 -d suriyakanth1/dockerimagebuild:test
                 env:
                   DOCKER_USERNAME: suriyakanth1
                   DOCKER_PASSWORD: Suriya@1999
