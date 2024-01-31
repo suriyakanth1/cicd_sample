@@ -53,10 +53,10 @@
             needs: [sonarqube]
             steps:
               - name: Checkout code
-                uses: appleboy/ssh-action@master
+                uses: actions/checkout@v3
 
               - name: SSH into the linux server
-                uses: actions/checkout@master
+                uses: appleboy/ssh-action@master
                 with:
                   host: 158.220.107.63
                   username: root
