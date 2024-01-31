@@ -50,4 +50,30 @@
             env:
                  SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
                  SONAR_HOST_URL: http://158.220.107.63:9000/
-        
+          DEPLOY:
+            needs : [SONARQUBE]
+            runs-on: ubuntu-latest
+            steps:
+              - name: Checkout code
+                uses: actions/checkout@v2
+
+              - name: SSH into the linux server
+                uses: appleboy/ssh-action@master
+                with:
+                  host: 158.220.107.63
+                  username: root
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  port: 22
+
+              - name: Pull Docker Image
+                run: docker pull suriyakanth1/dockerimagebuild:test
+                env:
+                  DOCKER_USERNAME: suriyakanth1
+                  DOCKER_PASSWORD: Suriya@1999
+
+              - name: Run Docker Container
+                run: |
+                   docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:test
+                env:
+                  DOCKER_USERNAME: suriyakanth1
+                  DOCKER_PASSWORD: Suriya@1999
