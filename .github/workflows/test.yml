@@ -60,7 +60,7 @@
                 with:
                   host: 158.220.107.63
                   username: root
-                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDOCfYEf8qH7PiAq289QtJdfjdpGBLIDUiNdUddHoTNRFyrLotSeGGM7kgvIumCVfrkvfCjhTPIJXDBgl7Z2Izy2o4f44tHUIWKXlImwyAMMBuNq4D9y7Ishul9TvKuwxI3Rbi0szQF8LwBYFeoRCslJjydmYQCW9BxMEwihXP5VZ0SCvPGcJtfQZvBdGq7Ozmk4pVu4qaPEUOwHE4bjt3H0mbE2yPwi2WL6us4goh/8H42BoufkMeDI3O3747wiqjj5eQH3ySilEZ6r8AqfSj2Y+ZHj2sH/m/956/enkFA+U/zrgYRrn7hHBM6I2I7PVM4okB/K6CMaxHHIovRlGuHf3lV+dyOMTs+cYLdYhH5WodY8xrI0I3RwsDqSqKUxSMyCtDZzEcAIhprZj2eWL31JS62vYoLqIm2InVfWeR1n3meal64JHm/0Dun0kUytHY+nyphyH2zbtJhtIrjENzvHGE8Xcd9b/VZfqVZNBd7kUawva6qkQMdNMZ5Cn548ojmF/qJnngheZjnvlkXVF9DXP3hB0WUONyUe3qUmOXo5KtL7QFaeBwl+mgjxTNupFoyOIZCfgz0J8eqwRwIPV0qrQHG2aCz11zzfkJuBlDCwrjdKbhkg3hHaUm7TIAaKpCLg7969QiM2C5XRY23tD96B6Lses7zj8iL9kT7qvjFpw== suriya271999@gmail.com
                   port: 22
 
               - name: Pull Docker Image
