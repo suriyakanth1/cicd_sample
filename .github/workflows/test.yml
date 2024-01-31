@@ -57,4 +57,4 @@
 
               - name: Deploy to Linux Server
                 run: |
-                 sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no root@158.220.107.63 "docker pull suriyakanth1/dockerimagebuild:test && docker run --rm -p 3001:3001 -d suriyakanth1/dockerimagebuild:test"
+                 sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no root@158.220.107.63 "docker pull suriyakanth1/dockerimagebuild:test && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:test"
