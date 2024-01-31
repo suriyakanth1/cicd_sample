@@ -64,14 +64,14 @@
                   port: 22
 
               - name: Pull Docker Image
-                run: docker pull suriyakanth1/dockerimagebuild:main
+                run: docker pull suriyakanth1/dockerimagebuild:test
                 env:
                   DOCKER_USERNAME: suriyakanth1
                   DOCKER_PASSWORD: dckr_pat_LSDYW7uqWPPYvQOrLJFEbl7oPjM
 
               - name: Run Docker Container
                 run: |
-                   docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main
+                   docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:test
                 env:
                   DOCKER_USERNAME: suriyakanth1
                   DOCKER_PASSWORD: dckr_pat_LSDYW7uqWPPYvQOrLJFEbl7oPjM
