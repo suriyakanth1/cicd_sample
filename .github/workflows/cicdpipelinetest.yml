@@ -1,4 +1,4 @@
-        name: cicdpipeline-main
+        name: cicd-main
         on:
             workflow_dispatch:
 
