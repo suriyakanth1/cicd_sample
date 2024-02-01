@@ -2,7 +2,7 @@
     name: modelpipeline
     
     on:
-      push:
+      workflow_dispatch:
     
     jobs:
       build:
