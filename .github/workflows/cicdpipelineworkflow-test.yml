@@ -1,6 +1,6 @@
         name: cicdpipelineworkflow-test
         on:
-            push:
+            workflow_dispatch:
 
         jobs:
           build:
