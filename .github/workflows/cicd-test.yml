@@ -1,6 +1,6 @@
-        name: cicd-test
+        name: cicd-test1
         on:
-           workflow_dispatch:
+            workflow_dispatch:
 
         jobs:
           build:
