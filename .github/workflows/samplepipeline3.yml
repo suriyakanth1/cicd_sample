@@ -1,7 +1,7 @@
         name: samplepipeline3
 
         on:                  
-          workflow_dispatch:
+          :
                              
 
         jobs:
