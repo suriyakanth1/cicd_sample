@@ -26,7 +26,7 @@ jobs:
           password: ClearC0de20S4  # Storing passwords as secrets is more secure
           port: 22
           script: |
-            cd ~/home/danielwetan/apps/node1
+            cd ~/
             git pull origin master
             git status
             npm install --only=prod
