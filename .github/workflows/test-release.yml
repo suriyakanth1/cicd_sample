@@ -8,7 +8,7 @@ jobs:
     name: GITHUB
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
+      - name: Check out the repob
         uses: actions/checkout@v3
 
   VIRTUALMACHINE:
@@ -17,7 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      - name: Transfer Application Code
+        run: scp -r ./suriyakanth1/cicd_sample/blob/main/index.js root@158.220.107.63:~/projects/cicdapp
       - name: Deploy to Linux Server
         uses: appleboy/ssh-action@master  # Assuming you're using a custom action for SSH deployment
         with:
