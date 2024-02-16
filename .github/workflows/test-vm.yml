@@ -1,0 +1,17 @@
+        name: test-vm
+
+        on:                  
+          workflow_dispatch:
+                             
+
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
+                - name: Check out the repo
+                  uses: actions/checkout@v3  
+            
+
+
+
