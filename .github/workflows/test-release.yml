@@ -23,7 +23,7 @@ jobs:
         with:
           host: 158.220.107.63
           username: root
-          password: ${{ secrets.SERVER_PASSWORD }}  # Storing passwords as secrets is more secure
+          password: ClearC0de20S4  # Storing passwords as secrets is more secure
           port: 22
           script: |
             cd ~/home/danielwetan/apps/node1
