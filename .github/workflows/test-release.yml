@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Transfer Application Code
-        run: sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no -r c:/cicd-node-app/cicd_sample/ root@158.220.107.63:~/projects/cicdapp
+        run: sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no c:/cicd-node-app/cicd_sample/ root@158.220.107.63:~/projects/cicdapp
       - name: Deploy to Linux Server
         uses: appleboy/ssh-action@master  # Assuming you're using a custom action for SSH deployment
         with:
