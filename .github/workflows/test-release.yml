@@ -1,7 +1,6 @@
         name: test-release1
         on:
-            push
-
+         push:
         jobs:
           build:
            name: GITHUB
