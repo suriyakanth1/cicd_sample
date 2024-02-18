@@ -17,9 +17,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Transfer Application Code
-        run: scp -r ./cicd-node-app/cicd-sample/index.js root@158.220.107.63:~/projects/cicdapp
-
       - name: Deploy to Linux Server
         uses: appleboy/ssh-action@master
         with:
