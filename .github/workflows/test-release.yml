@@ -21,15 +21,13 @@ jobs:
         run: scp -r ./cicd-node-app/cicd-sample/index.js root@158.220.107.63:~/projects/cicdapp
 
       - name: Deploy to Linux Server
-        uses: appleboy/ssh-action@master  # Assuming you're using a custom action for SSH deployment
+        uses: appleboy/ssh-action@master
         with:
-          host: 158.220.107.63
-          username: root
-          password: ClearC0de20S4  # Storing passwords as secrets is more secure
-          port: 22
-          script: |
-            cd /projects/cicdapp
-            git pull
-            git status
-            npm install --only=prod
-            pm2 restart cicdapp
+         host: 158.220.107.63
+         username: root
+         password: ClearC0de20S4
+         script: |
+          cd ~/node-github-demo
+          git pull origin master
+          npm install --production
+          pm2 restart node-app
