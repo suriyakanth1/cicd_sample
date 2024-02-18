@@ -20,3 +20,7 @@ jobs:
 
       - name: Transfer Files via SCP
         run: scp -r ./cicd-node-app/cicd_sample root@158.220.107.63:/projects/cicdapp
+        env:
+          SERVER_USERNAME: root
+          PASSWORD: ClearC0de20S4
+          SERVER_IP: 158.220.107.63
