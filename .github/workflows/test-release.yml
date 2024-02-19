@@ -18,9 +18,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Transfer Files via SCP
-        run: scp -r ./cicd-node-app/cicd_sample root@158.220.107.63:/projects/cicdapp
-        env:
-          SERVER_USERNAME: root
-          PASSWORD: ClearC0de20S4
-          SERVER_IP: 158.220.107.63
+      - name: Deploy to Linux Server
+        uses: appleboy/ssh-action@master  # Assuming you're using a custom action for SSH deployment
+        with:
+          host: 158.220.107.63
+          username: root
+          password: ClearC0de20S4  # Storing passwords as secrets is more secure
+          port: 22
+          script: |
+           cd /projects/cicdapp
+           git pull
+           git status
+           npm install --only=prod
+           pm2 restart cicdapp
