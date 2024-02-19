@@ -30,3 +30,4 @@ jobs:
            git pull
            git status
            npm install
+           node index.js
