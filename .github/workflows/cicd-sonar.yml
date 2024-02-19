@@ -29,5 +29,5 @@ jobs:
            ~/projects/cicdapp/cicd_sample/
            git pull
            git status
-           npm install --only=prod
+           npm install
            pm2 restart cicd_sample
