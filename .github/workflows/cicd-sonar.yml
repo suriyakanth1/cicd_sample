@@ -30,4 +30,3 @@ jobs:
            git pull
            git status
            npm install
-           pm2 restart index.js
