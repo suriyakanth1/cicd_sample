@@ -26,7 +26,7 @@ jobs:
           password: ClearC0de20S4  # Storing passwords as secrets is more secure
           port: 22
           script: |
-           cd /projects/cicdapp-test
+           cd/projects/cicdapp-test
            git pull
            git status
            npm install --only=prod
