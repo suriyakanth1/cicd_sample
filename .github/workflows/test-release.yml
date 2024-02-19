@@ -26,8 +26,8 @@ jobs:
           password: ClearC0de20S4  # Storing passwords as secrets is more secure
           port: 22
           script: |
-           cd/projects/cicdapp-test
+           ~/projects/cicdapp-test#
            git pull
            git status
            npm install --only=prod
-           pm2 restart cicdapp
+           pm2 restart cicd_sample
