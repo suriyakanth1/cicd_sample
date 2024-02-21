@@ -30,6 +30,6 @@
                             git pull origin main
                             git status
                             npm install
-                            ../node index.js
+                            node index.js
                             sleep 10
 
