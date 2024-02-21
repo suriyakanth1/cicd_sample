@@ -1,7 +1,7 @@
         name: direct-deployment
 
         on:                  
-          workflow_dispatch:
+          push:
                              
 
         jobs:
@@ -26,17 +26,16 @@
 
                - name: Deploy to Linux Server
                  uses: appleboy/ssh-action@master
-                                
-                                with:
-                                host: 158.220.107.63
-                                username: root
-                                password: ClearC0de20S4  # Storing passwords as secrets is more secure
-                                port: 22
-                                script: |
-                                 ~/projects/cicdapp-test/cicd_sample/
-                                 git pull origin test
-                                 git status
-                                 npm install
-                                 node index.js
-                                 sleep 10
+                 with:
+                     host: 158.220.107.63
+                     username: root
+                     password: ClearC0de20S4  # Storing passwords as secrets is more secure
+                     port: 22
+                     script: |
+                            ~/projects/cicdapp-test/cicd_sample/
+                            git pull origin test
+                            git status
+                            npm install
+                            node index.js
+                            sleep 10
                                  
