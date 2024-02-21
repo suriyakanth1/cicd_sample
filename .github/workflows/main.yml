@@ -31,4 +31,5 @@
                          git status
                          npm install
                          node index.js
+                         sleep 10
 
