@@ -32,7 +32,7 @@
                      password: ClearC0de20S4  # Storing passwords as secrets is more secure
                      port: 22
                      script: |
-                            ~/projects/cicdapp-test/cicd_sample/
+                            root/projects/cicdapp-test/cicd_sample/
                             git pull origin test
                             git status
                             npm install
