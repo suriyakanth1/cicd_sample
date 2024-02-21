@@ -26,8 +26,8 @@
                      password: ClearC0de20S4  # Storing passwords as secrets is more secure
                      port: 22
                      script: |
-                            root/projects/cicdapp-test/cicd_sample
-                            git pull origin test
+                            root/projects/cicdapp/cicd_sample
+                            git pull origin main
                             git status
                             npm install
                             ../node index.js
