@@ -64,7 +64,5 @@
                  uses: actions/checkout@v3
 
                - name: Deploy to Linux Server
-                 uses: appleboy/ssh-action@master
-                
-                            run: |
-                                sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no root@158.220.107.63 "docker pull suriyakanth1/dockerimagebuild:main && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main"
+                 run: |
+                   sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no root@158.220.107.63 "docker pull suriyakanth1/dockerimagebuild:main && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main"
