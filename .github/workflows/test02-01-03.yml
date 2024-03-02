@@ -44,7 +44,7 @@
 
         #---------------- sonarqube
           SONARQUBE:
-            needs : [DOCKERHUB]
+            needs : [SONARQUBE]
             runs-on: ubuntu-latest
             steps:
                 - uses: actions/checkout@master
