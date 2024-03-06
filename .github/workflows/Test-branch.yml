@@ -12,6 +12,7 @@
           build:
            name: GITHUB
            runs-on: ubuntu-latest
+           if: github.event.inputs.branch == github.ref
            steps:
                 - name: Check out the repo
                   uses: actions/checkout@v3  
