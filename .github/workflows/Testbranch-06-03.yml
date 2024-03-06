@@ -1,7 +1,7 @@
         name: Testbranch-06-03
 
         on:                  
-          push:
+          workflow_dispatch:
                              
 
         jobs:
