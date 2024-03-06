@@ -1,0 +1,14 @@
+name: Manual Workflow Dispatch
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Add your workflow steps here
