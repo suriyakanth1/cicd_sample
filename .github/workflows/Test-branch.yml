@@ -1,11 +1,7 @@
         name: Test-branch
 
         on:                  
-          workflow_dispatch:
-           inputs:
-              branch:
-                description: 'test'
-                required: true
+          workflow_dispatch: {}
                              
 
         jobs:
