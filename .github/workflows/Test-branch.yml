@@ -11,6 +11,7 @@
           build:
            name: GITHUB
            runs-on: ubuntu-latest
+           if: github.ref == 'refs/heads/test'
            steps:
                 - name: Check out the repo
                   uses: actions/checkout@v3  
