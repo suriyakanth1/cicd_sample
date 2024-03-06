@@ -1,4 +1,4 @@
-        name: sample-ts11
+        name: sample-ts12
         on:
             workflow_dispatch:
 
