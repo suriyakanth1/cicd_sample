@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout1 repository
         uses: actions/checkout@v2
 
       # Add your workflow steps here
