@@ -16,7 +16,7 @@
 
         #---------------- Docker
           DOCKERHUB:
-            needs : [build]
+            needs : [SONARQUBE]
             runs-on: ubuntu-latest
             steps:
                 - name: Check out the repo
@@ -44,7 +44,7 @@
 
         #---------------- sonarqube
           SONARQUBE:
-            needs : [DOCKERHUB]
+            needs : [build]
             runs-on: ubuntu-latest
             steps:
                 - uses: actions/checkout@master
