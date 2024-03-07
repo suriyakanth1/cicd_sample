@@ -16,7 +16,7 @@
 
         #---------------- Docker
           DOCKERHUB:
-            needs : [SONARQUBE]
+            needs : [build]
             runs-on: ubuntu-latest
             steps:
                 - name: Check out the repo
@@ -42,15 +42,3 @@
                     labels: ${{ steps.meta.outputs.labels }}
             
 
-        #---------------- sonarqube
-          SONARQUBE:
-            needs : [build]
-            runs-on: ubuntu-latest
-            steps:
-                - uses: actions/checkout@master
-                - name: SonarQube Scan
-                  uses: sonarsource/sonarqube-scan-action@master
-            env:
-                 SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
-                 SONAR_HOST_URL: http://158.220.107.63:9000/
-        
