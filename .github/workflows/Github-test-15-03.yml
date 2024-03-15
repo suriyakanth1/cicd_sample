@@ -3,6 +3,8 @@
         on:                  
           workflow_dispatch:
           push:
+          schedule:
+          - cron: '*/2 * * * *'
         jobs:
           build:
            name: GITHUB
