@@ -2,9 +2,7 @@
 
         on:                  
           workflow_dispatch:
-          push:
-          schedule:
-          - cron: '*/59 * * * *'
+
         jobs:
           build:
            name: GITHUB
