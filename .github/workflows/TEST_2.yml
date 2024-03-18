@@ -2,6 +2,8 @@
 
         on:
           workflow_dispatch:
+          schedule:
+            - cron: '18 23 * * 1-5'
         
 
         jobs:
