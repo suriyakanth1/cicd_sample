@@ -1,11 +1,10 @@
         name: Schedule_test_1
 
-        on:
-          workflow_dispatch:
-          schedule:
-            - cron: '*/8 * * * *'
-          push:
-    
+            on:
+              workflow_dispatch:
+              schedule:
+                - cron: '[object Object]'
+        
 
         jobs:
           build:
