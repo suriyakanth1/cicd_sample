@@ -3,7 +3,7 @@
         on:
           workflow_dispatch:
           schedule:
-            - cron: 'undefined'
+            - cron: '*/5 * * * *'
     
 
         jobs:
