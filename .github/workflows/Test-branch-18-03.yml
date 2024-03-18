@@ -2,9 +2,9 @@
 
         on:
           workflow_dispatch:
-          push:
           schedule:
             - cron: '*/5 * * * *'
+          push:
     
 
         jobs:
