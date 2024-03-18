@@ -1,8 +1,7 @@
         name: Schedule_Test_2
 
-            on:
-              workflow_dispatch:
-              push:
+        on:
+          workflow_dispatch:
         
 
         jobs:
