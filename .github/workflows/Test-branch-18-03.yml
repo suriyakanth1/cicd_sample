@@ -1,8 +1,10 @@
         name: Test-branch-18-03
 
-        on:                  
+        on:
           workflow_dispatch:
-                             
+          schedule:
+            - cron: 'undefined'
+    
 
         jobs:
           build:
