@@ -3,7 +3,7 @@
             on:
               workflow_dispatch:
               schedule:
-                - cron: '*/8 * * * *'
+                - cron: '1 23 * * 1-5'
         
 
         jobs:
