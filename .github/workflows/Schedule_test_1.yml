@@ -1,9 +1,9 @@
         name: Schedule_test_1
 
-            on:
-              workflow_dispatch:
-              schedule:
-                - cron: '1 23 * * 1-5'
+        on:
+          workflow_dispatch:
+          schedule:
+            - cron: '7 23 * * 1-5'
         
 
         jobs:
