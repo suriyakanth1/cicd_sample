@@ -1,9 +1,11 @@
         name: TEST_1
 
-        on:
-          workflow_dispatch:
-          push:
-        
+      on:
+        workflow_dispatch:
+        schedule:
+          - cron: '*/5 * * * *'
+        push:
+    
 
         jobs:
           build:
