@@ -3,7 +3,8 @@
       on:
         workflow_dispatch:
         schedule:
-          - cron: 'null'
+          - cron: '18 23 * * 1-5'
+        push:
     
 
         jobs:
