@@ -1,5 +1,10 @@
         name: TEST_2
 
+      on:
+        workflow_dispatch:
+        schedule:
+          - cron: 'null'
+    
 
         jobs:
           build:
