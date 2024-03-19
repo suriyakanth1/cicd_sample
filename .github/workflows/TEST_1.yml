@@ -2,9 +2,6 @@
 
       on:
         workflow_dispatch:
-        schedule:
-          - cron: '14 23 * * 1-5'
-        push:
     
 
         jobs:
