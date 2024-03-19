@@ -1,2 +1,2 @@
 # cicd_sample
-test oncommit
+test Scheduled
