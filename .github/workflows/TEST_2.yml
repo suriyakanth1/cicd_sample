@@ -3,7 +3,7 @@
         on:
           workflow_dispatch:
           schedule:
-            - cron: '21 4 * * *'
+            - cron: '34 4 * * *'
         
 
         jobs:
