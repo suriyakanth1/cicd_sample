@@ -1,8 +1,9 @@
         name: TEST_1
 
-      on:
-        workflow_dispatch:
-    
+        on:
+          workflow_dispatch:
+          push:
+        
 
         jobs:
           build:
