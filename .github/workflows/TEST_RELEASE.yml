@@ -1,9 +1,10 @@
         name: TEST_RELEASE
 
-      on:
-        workflow_dispatch:
-        push:
-      
+    on:
+      workflow_dispatch:
+      schedule:
+        - cron: '*/6 * * * *'
+  
 
         jobs:
           build:
