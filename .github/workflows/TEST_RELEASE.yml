@@ -1,9 +1,5 @@
         name: TEST_RELEASE
 
-    on:
-      workflow_dispatch:
-      push:
-  
 
         jobs:
           build:
