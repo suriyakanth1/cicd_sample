@@ -2,9 +2,8 @@
 
     on:
       workflow_dispatch:
-      schedule:
-        - cron: '*/6 * * * *'
-  
+      push:
+      
 
         jobs:
           build:
