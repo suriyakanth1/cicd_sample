@@ -1,5 +1,8 @@
         name: CICD_SAMPLE
 
+        on:
+          workflow_dispatch:
+    
 
         jobs:
           build:
