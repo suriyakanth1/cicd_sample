@@ -3,7 +3,7 @@
         on:                  
           workflow_dispatch:
           schedule:
-            - cron: '50 11 * * *'
+            - cron: '*/5 * * * *'
                              
 
         jobs:
