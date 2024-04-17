@@ -7,7 +7,7 @@
         jobs:
           build:
            name: GITHUB
-           runs-on: ubuntu-latest
+           runs-on: windows-latest
            steps:
                 - name: Check out the repo
                   uses: actions/checkout@v3  
@@ -17,7 +17,7 @@
         #---------------- Docker
           DOCKERHUB:
             needs : [build]
-            runs-on: ubuntu-latest
+            runs-on: windows-latest
             steps:
                 - name: Checkout code
                   uses: actions/checkout@v2
@@ -40,7 +40,7 @@
         #---------------- sonarqube
           SONARQUBE:
             needs : [DOCKERHUB]
-            runs-on: ubuntu-latest
+            runs-on: windows-latest
             steps:
                 - uses: actions/checkout@master
                 - name: SonarQube Scan
