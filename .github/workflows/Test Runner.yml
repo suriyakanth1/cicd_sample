@@ -8,7 +8,6 @@
           build:
            name: GITHUB
            runs-on: self-hosted
-                - label-1
            steps:
                 - name: Check out the repo
                   uses: actions/checkout@v3  
