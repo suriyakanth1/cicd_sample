@@ -7,7 +7,8 @@
         jobs:
           build:
            name: GITHUB
-           runs-on: ubuntu-latest
+           runs-on: self-hosted
+                - label-1
            steps:
                 - name: Check out the repo
                   uses: actions/checkout@v3  
@@ -17,7 +18,7 @@
         #---------------- Docker
           DOCKERHUB:
             needs : [build]
-            runs-on: ubuntu-latest
+            runs-on: self-hosted
             steps:
                 - name: Checkout code
                   uses: actions/checkout@v2
