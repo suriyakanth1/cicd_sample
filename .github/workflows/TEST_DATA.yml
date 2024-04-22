@@ -29,7 +29,7 @@
                   uses: docker/login-action@v2
                   with:
                     username: suriyakanth1
-                    password: dckr_pat_LSDYW7uqWPPYvQOrLJFEbl7oPjM
+                    password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
                 - name: Build and push
                   uses: docker/build-push-action@v5
                   with:
