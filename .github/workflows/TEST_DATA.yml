@@ -18,6 +18,8 @@
           DOCKERHUB:
             needs : [build]
             runs-on: ubuntu-latest
+            environment:
+                name: STAGING
             steps:
                 - name: Checkout code
                   uses: actions/checkout@v2
