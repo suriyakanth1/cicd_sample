@@ -1,2 +1,2 @@
 # cicd_sample
-test oncommit 12-04-2024
+test oncommit 24-04-2024
