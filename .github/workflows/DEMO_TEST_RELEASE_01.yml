@@ -2,6 +2,8 @@
 
         on:
           workflow_dispatch:
+        env:
+           name: STAGING  
 
 
         jobs:
@@ -18,8 +20,6 @@
           DOCKERHUB:
            needs: [build]
            runs-on: ubuntu-latest
-           environment:
-              name: STAGING
            steps:
              - name: Checkout code
                uses: actions/checkout@v2
@@ -51,8 +51,6 @@
       #---------------- VM
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
-            environment:
-              name: STAGING
             needs: [SONARQUBE]
             steps:
                - name: Checkout code
