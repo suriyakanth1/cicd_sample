@@ -52,7 +52,7 @@
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
             environment:
-        ]     name: STAGING
+              name: STAGING
             needs: [SONARQUBE]
             steps:
                - name: Checkout code
