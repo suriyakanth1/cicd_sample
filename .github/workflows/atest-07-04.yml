@@ -34,4 +34,15 @@
                   push: true
                   tags: null/dockerimagebuild:main
             
-undefined
+
+    #---------------- sonarqube
+          SONARQUBE:
+            needs: [DOCKERHUB]
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@master
+              - name: SonarQube Scan
+                uses: sonarsource/sonarqube-scan-action@master
+            env:
+                SONAR_TOKEN: null
+                SONAR_HOST_URL: null
