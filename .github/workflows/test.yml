@@ -49,16 +49,15 @@
                 SONAR_TOKEN: ${{ secrets.DEV_SONAR_ACCESSTOKEN }}
                 SONAR_HOST_URL: ${{ vars.DEV_SONAR_URL }}
 
-      #---------------- VM
-          VIRTUAL_MACHINE:
-            runs-on: ubuntu-latest
-            environment:
-              name: DEVELOPMENT
-            needs: [DOCKERHUB]
-            steps:
-               - name: Checkout code
-                 uses: actions/checkout@v3
-
-               - name: Deploy to Linux Server
-                 run: |
-                     sshpass -p ${{ secrets.DEV_VM_PASSWORD }} ssh -o StrictHostKeyChecking=no  ${{ vars.DEV_VM_USERNAME }}@${{ vars.DEV_VM_IPADDRESS }} "docker pull suriyakanth1/dockerimagebuild:main && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main"
+          #---------------- VM
+            VIRTUAL_MACHINE:
+              runs-on: ubuntu-latest
+              environment:
+                name: DEVELOPMENT
+              needs: [DOCKERHUB]
+              steps:
+                 - name: Checkout code
+                   uses: actions/checkout@v3
+                 - name: Deploy to Linux Server
+                   run: |
+                       sshpass -p ${{ secrets.DEV_VM_PASSWORD }} ssh -o StrictHostKeyChecking=no  ${{ vars.DEV_VM_USERNAME }}@${{ vars.DEV_VM_IPADDRESS }} "docker pull suriyakanth1/dockerimagebuild:main && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main"
