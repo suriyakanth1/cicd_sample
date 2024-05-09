@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Manual trigger cicd pipeline test on 09 May 2024 3.10 PM');
+  res.send('Manual trigger cicd pipeline test on 09 May 2024 6.30 PM');
 });
 
 app.listen(port, () => {
