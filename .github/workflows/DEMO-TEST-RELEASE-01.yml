@@ -2,10 +2,7 @@
 
         on:
           workflow_dispatch:
-          push:
-           paths-ignore:
-             - '.github/workflows/**'
-  
+
 
         jobs:
           build:
@@ -22,7 +19,7 @@
            needs: [build]
            runs-on: ubuntu-latest
            environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
            steps:
              - name: Checkout code
                uses: actions/checkout@v2
@@ -44,7 +41,7 @@
             needs: [DOCKERHUB]
             runs-on: ubuntu-latest
             environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
             steps:
               - uses: actions/checkout@master
               - name: SonarQube Scan
@@ -57,7 +54,7 @@
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
             environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
             needs: [SONARQUBE]
             steps:
                - name: Checkout code
