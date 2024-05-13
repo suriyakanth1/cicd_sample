@@ -33,4 +33,9 @@
                with:
                   push: true
                   tags: ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main
+             - name: Manual approval
+               uses: trstringer/manual-approval@v1
+               with:
+                  approvers: 'suriyakanth1,another_approver'
+                  message: 'Please approve the Docker image build.'
 
