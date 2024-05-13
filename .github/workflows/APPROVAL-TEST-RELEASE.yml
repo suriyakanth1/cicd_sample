@@ -33,6 +33,13 @@
                with:
                   push: true
                   tags: suriyakanth1/dockerimagebuild:main
+                  script: |
+                    # Hypothetical API call to external system
+                    curl -X GET http://158.220.107.63:2001/cloudmatiq/cicd/environments/6 "commitSHA=${{ github.sha }}"
+
+                    # Pause workflow execution for 1 hour (adjust as needed)
+                    core.info('Waiting for external approval...')
+                    await new Promise(resolve => setTimeout(resolve, 60 * 60 * 1000))
             
 
     #---------------- sonarqube
