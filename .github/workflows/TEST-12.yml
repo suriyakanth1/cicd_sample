@@ -18,6 +18,8 @@
           DOCKERHUB:
            needs: [build]
            runs-on: ubuntu-latest
+           environment:
+              name: DEVELOPMENT
            steps:
              - name: Checkout code
                uses: actions/checkout@v2
@@ -33,9 +35,4 @@
                with:
                   push: true
                   tags: ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main
-             - name: Manual approval
-               uses: trstringer/manual-approval@v1
-               with:
-                  approvers: 'suriyakanth1,another_approver'
-                  message: 'Please approve the Docker image build.'
 
