@@ -26,6 +26,7 @@
                with:
                  approvers: 'suriyakanth1,another_approver'
                  issue-body: 'Please approve the Docker image build.'
+                 input-secret: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
