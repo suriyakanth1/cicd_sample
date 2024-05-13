@@ -26,7 +26,11 @@
                with:
                  approvers: 'suriyakanth1,another_approver'
                  issue-body: 'Please approve the Docker image build.'
-                 secret: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+                 minimum-approvals: 1
+                 issue-title: "Deploying v1.3.5 to prod from staging"
+                 exclude-workflow-initiator-as-approver: false
+                 additional-approved-words: ''
+                 additional-denied-words: ''
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
