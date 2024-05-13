@@ -21,6 +21,11 @@
            environment:
               name: DEVELOPMENT
            steps:
+             - name: Manual approval
+               uses: trstringer/manual-approval@v1
+               with:
+                 approvers: 'suriyakanth1,another_approver'
+                 message: 'Please approve the Docker image build.'
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
