@@ -31,8 +31,16 @@
              - name: Build and push
                uses: docker/build-push-action@v5
                with:
-                  push: true
-                  tags: suriyakanth1/dockerimagebuild:main
+                 script: |
+                   const { context } = github;
+                    await github.actions.createWorkflowRunPause({
+                   owner: context.repo.owner,
+                   repo: context.repo.repo,
+                   run_id: context.runId,
+                   reason: "Manual pause for review"
+                   });
+                   push: true
+                   tags: suriyakanth1/dockerimagebuild:main
             
 
     #---------------- sonarqube
