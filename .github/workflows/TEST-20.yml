@@ -19,7 +19,7 @@
            needs: [build]
            runs-on: ubuntu-latest
            environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
            steps:
              - name: Checkout code
                uses: actions/checkout@v2
@@ -41,7 +41,7 @@
             needs: [DOCKERHUB]
             runs-on: ubuntu-latest
             environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
             steps:
               - uses: actions/checkout@master
               - name: SonarQube Scan
@@ -54,11 +54,11 @@
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
             environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
             needs: [SONARQUBE]
             steps:
                - name: Checkout code
                  uses: actions/checkout@v3
                - name: Deploy to Linux Server
                  run: |
-                     sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no 158.220.107.63@${{ secrets.VM_IPADDRESS }} "docker pull ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main && docker run --rm -p 3000:3000 -d ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main"
+                     sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no 128.220.197.64@${{ secrets.VM_IPADDRESS }} "docker pull ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main && docker run --rm -p 3000:3000 -d ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main"
