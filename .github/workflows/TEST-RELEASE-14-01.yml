@@ -1,41 +1,42 @@
-        name: TEST-RELEASE-14-01
+name: TEST-RELEASE-14-01
 
-        on:
-          workflow_dispatch:
+on:
+  workflow_dispatch:
 
+jobs:
+  build:
+    name: GITHUB
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3  
 
-        jobs:
-          build:
-           name: GITHUB
-           runs-on: ubuntu-latest
-           steps:
-                - name: Check out the repo
-                  uses: actions/checkout@v3  
-            
-
-
-        #---------------- Docker
-          DOCKERHUB:
-           needs: [build]
-           runs-on: ubuntu-latest
-           environment:
-              name: DEVELOPMENT
-           # if: github.event_name == 'workflow_dispatch' && github.event.action == 'manual'
-           steps:
-             - name: Wait for 2 minutes
-               run: wait 60
-             - name: Checkout code
-               uses: actions/checkout@v2
-             - name: Set up Docker Buildx
-               uses: docker/setup-buildx-action@v3
-             - name: Login to Docker Hub
-               uses: docker/login-action@v2
-               with:
-                 username: ${{ secrets.DOCKER_USERNAME }}
-                 password: ${{ secrets.DOCKER_ACCESSTOKEN }}
-             - name: Build and push
-               uses: docker/build-push-action@v5
-               with:
-                  push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main
-
+#---------------- Docker
+  DOCKERHUB:
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment:
+      name: DEVELOPMENT
+    steps:
+      - name: Conditional Pause
+        if: github.event_name == 'workflow_dispatch'
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          check_conclusion: false
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          wait_for_approval: true
+          approval_comment: "Ready to resume"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESSTOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main
