@@ -23,7 +23,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.4.1
         with:
           check_conclusion: false
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          repo_token: "${{ secrets.ACCESS_TOKEN }}"
           wait_for_approval: true
           approval_comment: "Ready to resume"
       - name: Checkout code
