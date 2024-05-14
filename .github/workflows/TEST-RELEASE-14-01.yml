@@ -20,9 +20,10 @@
            runs-on: ubuntu-latest
            environment:
               name: DEVELOPMENT
+           if: github.event_name == 'workflow_dispatch' 
            steps:
-             - name: Wait for 2 minutes
-               run: sleep 120
+             # - name: Wait for 2 minutes
+             #   run: sleep 120
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
