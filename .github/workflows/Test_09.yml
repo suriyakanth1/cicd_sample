@@ -36,7 +36,7 @@
              - name: Wait for Approval
                run: |
                 # Hypothetical API call to external system
-                curl -X GET http://158.220.107.63:2001/cloudmatiq/cicd/environments/6 "commitSHA=${{ github.sha }}"
+                curl -X GET http://158.220.107.63:2001/cloudmatiq/cicd/environments/1 "commitSHA=${{ github.sha }}"
                 # Pause workflow execution for 1 hour (adjust as needed)
                 echo "Waiting for external approval..."
                 sleep 120  # 1 hour
