@@ -34,11 +34,6 @@
                    push: true
                    tags: suriyakanth1/dockerimagebuild:main
              - name: Wait for Approval
-               run: |
-                # Hypothetical API call to external system
-                curl -X GET http://158.220.107.63:4200/cicd/releases "commitSHA=${{ github.sha }}"
-                # Pause workflow execution for 1 hour (adjust as needed)
-                echo "Waiting for external approval..."
                 sleep 120  # 1 hour
             
 
