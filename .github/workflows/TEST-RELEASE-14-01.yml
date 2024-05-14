@@ -16,16 +16,14 @@ jobs:
       # Add a step to disable the workflow using GitHub REST API
       - name: Disable workflow
         if: always()
-        uses: octokit/request-action@v2.x
-        with:
-          route: PATCH /repos/${{ github.repository }}/actions/workflows/${{ github.workflow_id }}/disable
-          method: PATCH
-          headers: |
-            authorization: Bearer ${{ secrets.ACCESS_TOKEN }}
-          body: |
-            {
-              "state": "inactive"
-            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          curl -X PATCH \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d '{"state": "inactive"}' \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${{ github.workflow_id }}/disable"
 
   DOCKERHUB:
     needs: [build]
