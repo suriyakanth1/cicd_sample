@@ -23,7 +23,7 @@
            # if: github.event_name == 'workflow_dispatch' && github.event.action == 'manual'
            steps:
              - name: Wait for 2 minutes
-               run: sleep infinity
+               run: wait
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
