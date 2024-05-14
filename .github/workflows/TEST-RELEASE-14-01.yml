@@ -11,18 +11,23 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3  
 
-#---------------- Docker
-  DOCKERHUB:
+  #---------------- Docker
+  hold-for-approval:
+    runs-on: ubuntu-latest
     needs: [build]
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Hold for manual approval
+        uses: wei/cancel-action@v1
+        with:
+          message: "This job is waiting for manual approval."
+      
+  DOCKERHUB:
+    needs: [build, hold-for-approval]
     runs-on: ubuntu-latest
     environment:
       name: DEVELOPMENT
     steps:
-      - name: Conditional Pause
-        if: github.event_name == 'workflow_dispatch'
-        uses: styfle/cancel-workflow-action@0.4.1
-        with:
-          access_token: "${{ secrets.ACCESS_TOKEN }}"
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up Docker Buildx
