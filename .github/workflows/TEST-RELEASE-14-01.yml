@@ -22,10 +22,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         uses: styfle/cancel-workflow-action@0.4.1
         with:
-          check_conclusion: false
-          repo_token: "${{ secrets.ACCESS_TOKEN }}"
-          wait_for_approval: true
-          approval_comment: "Ready to resume"
+          access_token: "${{ secrets.ACCESS_TOKEN }}"
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up Docker Buildx
