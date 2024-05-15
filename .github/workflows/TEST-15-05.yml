@@ -19,6 +19,6 @@
             - name: Check out the repo
               uses: actions/checkout@v3
             - name: Run Docker build action 
-              uses: ./main/.github/workflows/dockerhub.yml
+              uses: ./.github/workflows/dockerhub.yml
 
           
