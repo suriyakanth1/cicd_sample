@@ -1,55 +1,40 @@
-        name: APPROVAL-TEST-RELEASE
+name: Example Workflow
 
-        on:
-          workflow_dispatch:
+on:
+  push:
+    branches: [main]
 
+jobs:
+  main_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Step 1
+        run: echo "This is step 1"
+        
+      - name: Step 2
+        run: |
+          echo "This is step 2"
+          # Simulate a failure
+          exit 1
 
-        jobs:
-          build:
-           name: GITHUB
-           runs-on: ubuntu-latest
-           steps:
-                - name: Check out the repo
-                  uses: actions/checkout@v3  
-            
+      - name: Step 3 (Manual Intervention)
+        if: failure()
+        run: |
+          echo "Previous step failed. Pausing workflow for manual intervention."
+          # Trigger manual intervention, e.g., create an issue
+          # Create an issue using GitHub API
+          # For example, using curl
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues \
+            -d '{"title":"Manual intervention required: Step 2 failed"}'
+          # Output a message indicating manual intervention required
+          echo "::error::Manual intervention required. Check GitHub issues for details."
+          # Exit with success status to pause the workflow
+          exit 0
 
-
-        #---------------- Docker
-          DOCKERHUB:
-           needs: [build]
-           runs-on: ubuntu-latest
-           steps:
-             - name: Checkout code
-               uses: actions/checkout@v2
-             - name: Set up Docker Buildx
-               uses: docker/setup-buildx-action@v3
-             - name: Login to Docker Hub
-               uses: docker/login-action@v2
-               with:
-                 username: suriyakanth1
-                 password: dckr_pat_LSDYW7uqWPPYvQOrLJFEbl7oPjM
-             - name: Build and push
-               uses: docker/build-push-action@v5
-               with:
-                  push: true
-                  tags: suriyakanth1/dockerimagebuild:main
-                  script: |
-                    # Hypothetical API call to external system
-                    curl -X GET http://158.220.107.63:2001/cloudmatiq/cicd/environments/6 "commitSHA=${{ github.sha }}"
-
-                    # Pause workflow execution for 1 hour (adjust as needed)
-                    core.info('Waiting for external approval...')
-                    await new Promise(resolve => setTimeout(resolve, 60 * 60 * 1000))
-            
-
-    #---------------- sonarqube
-          SONARQUBE:
-            needs: [DOCKERHUB]
-            runs-on: ubuntu-latest
-            steps:
-              - uses: actions/checkout@master
-              - name: SonarQube Scan
-                uses: sonarsource/sonarqube-scan-action@master
-            env:
-                SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
-                SONAR_HOST_URL: http://158.220.107.63:9000/
+      - name: Step 4
+        if: success() || github.event_name == 'workflow_dispatch'
+        run: echo "This is step 4"
