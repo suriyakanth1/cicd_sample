@@ -22,8 +22,8 @@
               name: DEVELOPMENT
            steps:
              - name: Wait for 2 minutes
-               run: sleep 120
-               # run: sleep infinity
+               # run: sleep 120
+               run: sleep infinity
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
