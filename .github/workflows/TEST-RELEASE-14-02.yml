@@ -21,9 +21,9 @@
            environment:
               name: DEVELOPMENT
            steps:
-             - name: Wait for 3 minutes
+             # - name: Wait for 3 minutes
                # run: sleep 180
-               run: sleep infinity
+               # run: sleep infinity
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
