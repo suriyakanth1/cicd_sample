@@ -16,8 +16,6 @@
            runs-on: ubuntu-latest
            needs: build
            steps:
-            - name: Check out the repo
-              uses: actions/checkout@v3
             - name: Run Docker build action 
               uses: ./.github/workflows/dockerhub.yml
 
