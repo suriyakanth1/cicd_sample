@@ -16,6 +16,6 @@
            runs-on: ubuntu-latest
            needs: build
            steps:
-            - uses: ./actions/dockerhub.yml
+            - uses: ././dockerhub.yml
 
           
