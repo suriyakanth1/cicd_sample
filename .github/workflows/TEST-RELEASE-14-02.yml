@@ -18,6 +18,7 @@
           DOCKERHUB:
            needs: [build]
            runs-on: ubuntu-latest
+           if: github.job == 'build' && github.event_name == 'workflow_dispatch' && success()
            environment:
               name: DEVELOPMENT
            steps:
