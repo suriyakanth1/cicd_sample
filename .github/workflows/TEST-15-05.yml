@@ -11,9 +11,11 @@
            steps:
                 - name: Check out the repo
                   uses: actions/checkout@v3 
+          Docker:
+           name: Docker Build
+           runs-on: ubuntu-latest
+           needs: build
+           steps:
+            - uses: ./dockerhub.yaml#dockerhub
 
-                - name: DockerHub
-                  uses: ./.github/actions/dockerhub.yml
-
-                - name: SonarQube
-                  uses: ./.github/actions/sonarqube.yml
+          
