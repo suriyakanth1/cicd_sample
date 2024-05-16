@@ -21,10 +21,10 @@
            environment:
               name: DEVELOPMENT
            steps:
-             - uses: trstringer/manual-approval@v1
-               with:
-                 secret: ${{ github.TOKEN }}
-                 approvers: suriyakanth1
+             # - uses: trstringer/manual-approval@v1
+             #   with:
+             #     secret: ${{ github.TOKEN }}
+             #     approvers: suriyakanth1
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
