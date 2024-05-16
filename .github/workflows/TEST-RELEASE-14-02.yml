@@ -18,7 +18,7 @@
           DOCKERHUB:
            needs: [build]
            runs-on: ubuntu-latest
-           if: github.job == 'build' && github.event_name == 'workflow_dispatch' && always() && ${{ jobs.build.attempts }} > 1
+           # if: github.job == 'build' && github.event_name == 'workflow_dispatch' && always() && ${{ jobs.build.attempts }} > 1
            environment:
               name: DEVELOPMENT
            steps:
@@ -45,7 +45,7 @@
             needs: [DOCKERHUB]
             runs-on: ubuntu-latest
             environment:
-              name: DEVELOPMENT
+              name: PRODUCTION
             steps:
               - uses: actions/checkout@master
               - name: SonarQube Scan
