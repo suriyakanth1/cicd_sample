@@ -21,7 +21,7 @@
            environment:
               name: DEVELOPMENT
            steps:
-             - uses: suriyakanth1/manual-approval@v1
+             - uses: trstringer/manual-approval@v1
                with:
                  secret: ${{ github.TOKEN }}
                  approvers: SureshM1100
