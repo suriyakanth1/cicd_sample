@@ -23,7 +23,6 @@
            steps:
              - uses: trstringer/manual-approval@v1
                with:
-                 secret: ${{ secrets.ACCESS_TOKEN }}
                  approvers: suriyakanth1
              - name: Checkout code
                uses: actions/checkout@v2
