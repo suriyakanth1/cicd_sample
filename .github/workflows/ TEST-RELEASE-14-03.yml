@@ -23,8 +23,8 @@
            steps:
              - uses: trstringer/manual-approval@v1
                with:
-                 secret: ${{ github.TOKEN }}
-                 approvers: SureshM1100
+                 secret: ${{ secrets.ACCESS_TOKEN }}
+                 approvers: suriyakanth1
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
