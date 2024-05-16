@@ -18,13 +18,9 @@
           DOCKERHUB:
            needs: [build]
            runs-on: ubuntu-latest
-           # if: github.job == 'build' && github.event_name == 'workflow_dispatch' && always() && ${{ jobs.build.attempts }} > 1
            environment:
               name: PRODUCTION
            steps:
-             # - name: Wait for 3 minutes
-               # run: sleep 180
-               # run: sleep infinity
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
