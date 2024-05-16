@@ -21,7 +21,6 @@
            environment:
               name: DEVELOPMENT
            steps:
-             - name: Manual approval
              - uses: trstringer/manual-approval@v1
                with:
                  secret: ${{ github.TOKEN }}
