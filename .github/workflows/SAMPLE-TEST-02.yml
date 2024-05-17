@@ -12,20 +12,23 @@
                 - name: Check out the repo
                   uses: actions/checkout@v3  
             
-
-
-        #---------------- Docker
-          DOCKERHUB:
+          ORCH:
            needs: [build]
            runs-on: ubuntu-latest
-           environment:
-              name: DEVELOPMENT
            steps:
              - name: Manual Approval 
                uses: trstringer/manual-approval@v1
                with:
                  secret: ${{ secrets.GITHUB_TOKEN }}
                  approvers: suriyakanth1
+
+        #---------------- Docker
+          DOCKERHUB:
+           needs: [ORCH]
+           runs-on: ubuntu-latest
+           environment:
+              name: DEVELOPMENT
+           steps:
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
