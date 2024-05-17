@@ -22,9 +22,6 @@
                  secret: ${{ secrets.GITHUB_TOKEN }}
                  approvers: suriyakanth1,SureshM1100,suriyakanth392
                  minimum-approvals: 2
-                 issue-title: "Waiting for approval"
-                 issue-body: "Please approve or deny"
-                 exclude-workflow-initiator-as-approver: false
 
         #---------------- Docker
           DOCKERHUB:
