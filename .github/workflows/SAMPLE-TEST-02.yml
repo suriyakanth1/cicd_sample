@@ -20,7 +20,7 @@
                uses: trstringer/manual-approval@v1
                with:
                  secret: ${{ secrets.GITHUB_TOKEN }}
-                 approvers: suriyakanth1,SureshM1100,suriyakanth392
+                 approvers: suriyakanth1,SureshM1100
                  minimum-approvals: 2
 
         #---------------- Docker
