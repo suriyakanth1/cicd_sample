@@ -23,7 +23,7 @@
            steps:
              - uses: trstringer/manual-approval@v1
                with:
-                 secret: ${{ secrets.ACCESS_TOKEN }}
+                 secret: ${{ secrets.GITHUB_TOKEN }}
                  approvers: suriyakanth1
                  issue-title: "Manual Approval"
                  issue-body: "Workflow_id: ${{ github.run_id }}"
