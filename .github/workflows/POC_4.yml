@@ -25,6 +25,8 @@
                with:
                  secret: ${{ secrets.ACCESS_TOKEN }}
                  approvers: suriyakanth1
+                 issue-title: "Manual Approval"
+                 issue-body: "Workflow_id: ${{ github.run_id }}"
              - name: Checkout code
                uses: actions/checkout@v2
              - name: Set up Docker Buildx
