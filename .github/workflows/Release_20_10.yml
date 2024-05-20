@@ -10,8 +10,7 @@
            runs-on: ubuntu-latest
            steps:
                 - name: Check out the repo
-                  uses: actions/checkout@v3  
-            ,
+                  uses: actions/checkout@v3 ,
 
         #---------------- Docker
           DOCKERHUB:
