@@ -10,7 +10,7 @@
            runs-on: ubuntu-latest
            steps:
                 - name: Check out the repo
-                  uses: actions/checkout@v3 ,
+                  uses: actions/checkout@v3 
 
         #---------------- Docker
           DOCKERHUB:
@@ -32,7 +32,7 @@
                uses: docker/build-push-action@v5
                with:
                   push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main,
+                  tags: ${{ secrets.DOCKER_USERNAME }}/dockerimagebuild:main
 
     #---------------- sonarqube
           SONARQUBE:
@@ -46,7 +46,7 @@
                 uses: sonarsource/sonarqube-scan-action@master
             env:
                 SONAR_TOKEN: ${{ vars.SONARQUBE_ACCESSTOKEN }}
-                SONAR_HOST_URL: ${{ vars.SONARQUBE_URL }},
+                SONAR_HOST_URL: ${{ vars.SONARQUBE_URL }}
  #---------------- Approval
           APPROVAL:
             needs: [SONARQUBE]
@@ -57,7 +57,7 @@
                    secret: ${{ secrets.GITHUB_TOKEN }}
                    approvers: suriyakanth1
                    issue-title: "Manual Approval"
-                   issue-body: "Workflow_id: ${{ github.run_id }}",
+                   issue-body: "Workflow_id: ${{ github.run_id }}"
  #---------------- Orchestration 
           ORCHESTRATION:
             needs: [APPROVAL]
@@ -68,7 +68,7 @@
                    secret: ${{ secrets.GITHUB_TOKEN }}
                    approvers: suriyakanth1
                    issue-title: "Manual Approval"
-                   issue-body: "Workflow_id: ${{ github.run_id }}",
+                   issue-body: "Workflow_id: ${{ github.run_id }}"
 
       #---------------- VM
           VIRTUAL_MACHINE:
