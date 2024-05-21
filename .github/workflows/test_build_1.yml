@@ -3,10 +3,7 @@
         on:
           workflow_dispatch:
           push:
-           paths-ignore:
-             - '.github/workflows/**'
-             - '**/Dockerfile'
-             - '**/sonar-project.properties'
+             
   
 
         jobs:
