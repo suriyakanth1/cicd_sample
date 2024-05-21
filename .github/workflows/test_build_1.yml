@@ -42,10 +42,14 @@
             runs-on: ubuntu-latest
             needs: [DOCKERHUB]
             steps:
-              - name: Deploy to Linux Server
-                run: |
-                 pwsh -command "param ([datetime]\$TargetDate; \$Today = Get-Date; \$Difference = New-TimeSpan -Start \$Today -End \$TargetDate; Write-Host 'The difference between \$Today and \$TargetDate is \$(\$Difference.Days) days.')"
-
+            - name: Run PowerShell script
+              uses: microsoft/powershell-action@v2
+              with:
+                script: |
+                                  $TargetDate = Get-Date "2023-04-01"
+                                  $Today = Get-Date
+                                  $Difference = New-TimeSpan -Start $Today -End $TargetDate
+                                  Write-Host "The difference between $Today and $TargetDate is $($Difference.Days) days."
  #---------------- VM
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
