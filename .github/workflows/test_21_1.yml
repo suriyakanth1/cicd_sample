@@ -35,5 +35,14 @@
                with:
                   push: true
                   tags: suriyakanth1/dockerimagebuild:main
-            
+            #--------------- BUILDSCRIPT
+          BUILDSCRIPT:
+            runs-on: ubuntu-latest
+            needs: [DOCKERHUB]
+            steps:
+              - name: Run PowerShell script
+                run: |
+                  # Run a PowerShell command remotely to calculate the sum of 10 + 10
+                  sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 'pwsh -Command "Write-Host \"The sum of 10 + 10 is $((10 + 10))\""'
+
 
