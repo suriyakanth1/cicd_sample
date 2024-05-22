@@ -47,14 +47,14 @@ jobs:
       - name: Calculate date difference
         shell: pwsh
         run: |
-          param (
-            [datetime]$TargetDate = '2024-05-25'  # Example: Provide your target date here
-          )
+              param (
+                    [datetime]$TargetDate = '2024-05-25'  # Example: Provide your target date here
+                    )
           
-          $Today = Get-Date
-          $Difference = New-TimeSpan -Start $Today -End $TargetDate
+              $Today = Get-Date
+              $Difference = New-TimeSpan -Start $Today -End $TargetDate
           
-          Write-Host "The difference between $Today and $TargetDate is $($Difference.Days) days."
+              Write-Host "The difference between $Today and $TargetDate is $($Difference.Days) days."
 
   #---------------- VM
   VIRTUAL_MACHINE:
