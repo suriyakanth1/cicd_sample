@@ -55,15 +55,4 @@ jobs:
         run: |
           sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt"
 
-  #---------------- VM
-  VIRTUAL_MACHINE:
-    runs-on: ubuntu-latest
-    environment:
-      name: DEVELOPMENT
-    needs: [BUILDSCRIPT]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Deploy to Linux Server
-        run: |
-          sshpass -p ClearC0de20S4 ssh -o StrictHostKeyChecking=no root@158.220.107.63 "docker pull suriyakanth1/dockerimagebuild:main && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main"
+  
