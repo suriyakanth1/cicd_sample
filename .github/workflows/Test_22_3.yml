@@ -46,11 +46,5 @@ jobs:
          $sum = $num1 + $num2
          Write-Output "The sum of $num1 and $num2 is: $sum"
      - name: Run SSH command to print file
-       uses: appleboy/ssh-action@v0.1.5
-       with:
-         host: 158.220.107.63
-         username: root
-         password: ClearC0de20S4
-         port: 22
-         script: |
-           cat ~/projects/script_test/sample.txt
+       run: |
+         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "date > ~/projects/script_test/sample.txt"
