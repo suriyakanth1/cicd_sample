@@ -50,13 +50,30 @@
             env:
                 SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
                 SONAR_HOST_URL: http://158.220.107.63:9000/
+       #--------------- BUILDSCRIPT
+          BUILDSCRIPT:
+             runs-on: ubuntu-latest
+             needs: [SONARQUBE]
+             steps:
+               - name: Run SSH command and PowerShell script
+                 shell: pwsh
+                 run: |
+                         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "date > ~/projects/script_test/sample.txt"
+                          param (
+                              [datetime]$TargetDate
+                                 )
+         
+                            $Today = Get-Date
+                            $Difference = New-TimeSpan -Start $Today -End $TargetDate
+         
+                            Write-Host "The difference between $Today and $TargetDate is $($Difference.Days) days."
 
       #---------------- VM
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
             environment:
               name: DEVELOPMENT
-            needs: [SONARQUBE]
+            needs: [BUILDSCRIPT]
             steps:
                - name: Checkout code
                  uses: actions/checkout@v3
