@@ -38,10 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [DOCKERHUB]
     steps:
-      - name: Create directory
-        run: mkdir -p ~/projects/script_test/
-
-      - name: Run SSH command
+      - name: Run PowerShell script
         shell: pwsh
         run: |
           $TargetDate = Get-Date '2024-05-25'  # Example: Provide your target date here
@@ -51,8 +48,6 @@ jobs:
 
           Write-Host "The difference between $Today and $TargetDate is $($Difference.Days) days." > ~/projects/script_test/sample.txt
 
-      - name: Run SSH command
+      - name: Run SSH command to print file
         run: |
-          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt"
-
-  
+          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt > /path/to/your/folder/sample.txt"
