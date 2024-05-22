@@ -41,7 +41,7 @@
            runs-on: ubuntu-latest
            needs: [DOCKERHUB]
            steps:
-             - name: Run SSH command
+             - name: example
                run: |
                      sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "date > ~/projects/script_test/sample.txt"
 
