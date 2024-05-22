@@ -38,13 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [DOCKERHUB]
     steps:
+    
+      - name: Run SSH command to print file
+        run: |
+          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt"
       - name: Run PowerShell script
         shell: pwsh
         run: |
           $Sum = 20 + 30
 
           "The sum of 20 and 30 is $Sum." > ~/projects/script_test/sample.txt
-
-      - name: Run SSH command to print file
-        run: |
-          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt"
