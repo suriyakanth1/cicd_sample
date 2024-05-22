@@ -50,4 +50,4 @@ jobs:
 
       - name: Run SSH command to print file
         run: |
-          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt > /path/to/your/folder/sample.txt"
+          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt > ~/projects/script_test/sample.txt"
