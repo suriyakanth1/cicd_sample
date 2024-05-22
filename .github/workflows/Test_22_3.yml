@@ -43,8 +43,7 @@ jobs:
         run: |
           $Sum = 20 + 30
 
-          "The sum of 20 and 30 is $Sum." > ~/projects/script_test/sample.txt
-
+          "The sum of 20 and 30 is $Sum." >  ~/projects/script_test/sample.txt
 
       - name: Run SSH command to print file
         run: |
