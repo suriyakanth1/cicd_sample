@@ -48,4 +48,4 @@ jobs:
      - name: Run SSH command to print file
        run: |
          sum=$((20+30))
-         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "echo The sum of $num1 and $num2 is: $sum > ~/projects/script_test/sample.txt"
+         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "echo The sum of 20 and 30 is: $sum > ~/projects/script_test/sample.txt"
