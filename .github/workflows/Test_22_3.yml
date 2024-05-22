@@ -38,16 +38,19 @@ jobs:
     runs-on: ubuntu-latest
     needs: [DOCKERHUB]
     steps:
-      - name: Create and run script
-        run: |
-          echo "#!/bin/bash" > ~/projects/script_test/calculate_sum.sh
-          echo "num1=20" >> ~/projects/script_test/calculate_sum.sh
-          echo "num2=30" >> ~/projects/script_test/calculate_sum.sh
-          echo "sum=$((num1 + num2))" >> ~/projects/script_test/calculate_sum.sh
-          echo 'echo "The sum of $num1 and $num2 is: $sum"' >> ~/projects/script_test/calculate_sum.sh
-          chmod +x ~/projects/script_test/calculate_sum.sh
-          ~/projects/script_test/calculate_sum.sh > ~/projects/script_test/sample.txt
-
-      - name: Run SSH command to print file
-        run: |
-          sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "cat ~/projects/script_test/sample.txt"
+     - name: Run PowerShell script
+       shell: pwsh
+       run: |
+         $num1 = 20
+         $num2 = 30
+         $sum = $num1 + $num2
+         Write-Output "The sum of $num1 and $num2 is: $sum"
+     - name: Run SSH command to print file
+       uses: appleboy/ssh-action@v0.1.5
+       with:
+         host: 158.220.107.63
+         username: root
+         password: ClearC0de20S4
+         port: 22
+         script: |
+           cat ~/projects/script_test/sample.txt
