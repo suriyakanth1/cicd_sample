@@ -45,6 +45,6 @@ jobs:
       - name: Run PowerShell script
         shell: pwsh
         run: |
-          $Sum = 20 + 30
+          "$Sum = 20 + 30
 
-          "The sum of 20 and 30 is $Sum." > ~/projects/script_test/sample.txt
+          "The sum of 20 and 30 is $Sum." > ~/projects/script_test/sample.txt"
