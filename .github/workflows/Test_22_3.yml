@@ -40,12 +40,11 @@ jobs:
     steps:
      - name: Run PowerShell script
        run: |
-         $num1 = 20
-         $num2 = 30
-         $sum = $num1 + $num2
-         echo "The sum of $num1 and $num2 is: $sum"
-         sum=$((20+30))
-         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "echo The sum of 20 and 30 is: $sum > ~/projects/script_test/sample.txt"
+             $num1 = 20
+             $num2 = 30
+             $sum = $num1 + $num2
+             echo "The sum of $num1 and $num2 is: $sum"
+             sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "echo The sum of 20 and 30 is: $sum > ~/projects/script_test/sample.txt"
 
          
     
