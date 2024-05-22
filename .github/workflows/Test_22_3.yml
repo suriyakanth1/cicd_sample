@@ -38,6 +38,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [DOCKERHUB]
     steps:
+     - name: Run SSH command to print file
+       run: |
+         sum=$((20+30))
+         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "echo The sum of 20 and 30 is: $sum > ~/projects/script_test/sample.txt"
+
      - name: Run PowerShell script
        shell: pwsh
        run: |
@@ -45,7 +50,4 @@ jobs:
          $num2 = 30
          $sum = $num1 + $num2
          echo "The sum of $num1 and $num2 is: $sum"
-     - name: Run SSH command to print file
-       run: |
-         sum=$((20+30))
-         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 "echo The sum of 20 and 30 is: $sum > ~/projects/script_test/sample.txt"
+    
