@@ -41,12 +41,9 @@ jobs:
       - name: Run PowerShell script
         shell: pwsh
         run: |
-          $TargetDate = Get-Date '2024-05-25'  # Example: Provide your target date here
+          $Sum = 20 + 30
 
-          $Today = Get-Date
-          $Difference = New-TimeSpan -Start $Today -End $TargetDate
-
-          "The difference between $Today and $TargetDate is $($Difference) days." > ~/projects/script_test/sample_tmp.txt
+          "The sum of 20 and 30 is $Sum." > ~/projects/script_test/sample_tmp.txt
 
       - name: Move temporary file to original path
         run: mv ~/projects/script_test/sample_tmp.txt ~/projects/script_test/sample.txt
