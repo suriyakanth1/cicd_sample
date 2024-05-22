@@ -41,7 +41,7 @@ jobs:
       - name: Create directory
         run: mkdir -p ~/projects/script_test/
 
-      - name: Run PowerShell script
+      - name: Run SSH command
         shell: pwsh
         run: |
           $TargetDate = Get-Date '2024-05-25'  # Example: Provide your target date here
