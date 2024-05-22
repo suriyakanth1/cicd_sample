@@ -46,7 +46,7 @@ jobs:
           $Today = Get-Date
           $Difference = New-TimeSpan -Start $Today -End $TargetDate
 
-          "The difference between $Today and $TargetDate is $($Difference.Days) days." > ~/projects/script_test/sample.txt
+          "The difference between $Today and $TargetDate is $($Difference) days." > ~/projects/script_test/sample.txt
 
       - name: Run SSH command to print file
         run: |
