@@ -74,3 +74,16 @@
                                
                               # Step 5: Run the JAR file
                               java -jar Main.jar EOF
+
+  #---------------- VM
+          VIRTUAL_MACHINE:
+            runs-on: ubuntu-latest
+            environment:
+              name: DEVELOPMENT
+            needs: [SONARQUBE]
+            steps:
+               - name: Checkout code
+                 uses: actions/checkout@v3
+               - name: Deploy to Linux Server
+                 run: |
+                     sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IPADDRESS }} "docker pull suriyakanth1/dockerimagebuild:main && docker run --rm -p 3000:3000 -d suriyakanth1/dockerimagebuild:main"
