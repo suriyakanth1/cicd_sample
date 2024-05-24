@@ -2,6 +2,7 @@ name: Test_22_3
 
 on:
   workflow_dispatch:
+  push:
     
 
 jobs:
