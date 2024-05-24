@@ -75,7 +75,7 @@
                               # Step 5: Run the JAR file
                               java -jar Main.jar EOF
 
-  #---------------- VM
+  #---------------- VM 
           VIRTUAL_MACHINE:
             runs-on: ubuntu-latest
             environment:
