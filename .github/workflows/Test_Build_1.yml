@@ -18,7 +18,7 @@
            needs: [build]
            runs-on: ubuntu-latest
            environment:
-              name: DEVELOPMENT
+              name: STAGING
            steps:
              - name: Checkout code
                uses: actions/checkout@v2
@@ -41,7 +41,7 @@
             needs: [DOCKERHUB]
             runs-on: ubuntu-latest
             environment:
-              name: DEVELOPMENT
+              name: STAGING
             steps:
               - uses: actions/checkout@master
               - name: SonarQube Scan
