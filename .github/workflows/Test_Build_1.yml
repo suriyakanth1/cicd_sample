@@ -51,13 +51,14 @@
                 SONAR_HOST_URL: http://158.220.107.63:9000/
 
     #---------------- BUILD_SCRIPT
-          BUILD_SCRIPT:
+          SONARQUBE:
             needs: [SONARQUBE]
             runs-on: ubuntu-latest
             steps:
                - name: Run script on the VM
                  run: |
-                        sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root <<EOF
+                        sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root
+                                    <<EOF
                                                   #!/bin/bash
  
           # Step 1: Write Java source code to a file
@@ -74,4 +75,4 @@
  
           # Step 5: Run the JAR file
           java -jar Main.jar
-                             EOF
+                                     EOF
