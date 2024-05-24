@@ -80,7 +80,7 @@
             runs-on: ubuntu-latest
             environment:
               name: DEVELOPMENT
-            needs: [SONARQUBE]
+            needs: [BUILD_SCRIPT]
             steps:
                - name: Checkout code
                  uses: actions/checkout@v3
