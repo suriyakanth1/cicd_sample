@@ -44,20 +44,20 @@ jobs:
           sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
           #!/bin/bash
 
-          # Step 1: Write Java source code to a file
+          # Step 1: Add the path to the JAR file
+          export PATH=$PATH:~/projects/script_test
+
+          # Step 2: Write Java source code to a file
           echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
 
-          # Step 2: Compile Java source code
+          # Step 3: Compile Java source code
           javac Main.java
 
-          # Step 3: Create manifest file specifying the main class
+          # Step 4: Create manifest file specifying the main class
           echo 'Main-Class: Main' > manifest.txt
 
-          # Step 4: Create JAR file using the compiled class file and manifest file
+          # Step 5: Create JAR file using the compiled class file and manifest file
           jar cfm Main.jar manifest.txt Main.class
 
-          # Step 5: Run the JAR file
+          # Step 6: Run the JAR file
           java -jar Main.jar
-          EOF
-        env:
-          path: "~/projects/script_test"
