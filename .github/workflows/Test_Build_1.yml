@@ -69,8 +69,4 @@
                               # Step 3: Create manifest file specifying the main class
                               echo 'Main-Class: Main' > manifest.txt
                                
-                              # Step 4: Create JAR file using the compiled class file and manifest file
-                              jar cfm Main.jar manifest.txt Main.class
-                               
-                              # Step 5: Run the JAR file
-                              java -jar Main.jar
+                              
