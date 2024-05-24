@@ -45,7 +45,7 @@ jobs:
           sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
         
 
-          # Step 1: Change to the directory
+          # Step 1: Change to the directory 
           cd ~/projects/script_test
 
           # Step 2: Write Java source code to a file
