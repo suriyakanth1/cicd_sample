@@ -43,10 +43,10 @@ jobs:
       - name: Run script on the VM
         run: |
           sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
-          #!/bin/bash
+        
 
-          # Step 1: Add the path to the JAR file
-          export PATH=$PATH:~/projects/script_test
+          # Step 1: Change to the directory
+          cd ~/projects/script_test
 
           # Step 2: Write Java source code to a file
           echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
