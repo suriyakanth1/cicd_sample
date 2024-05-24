@@ -57,7 +57,7 @@
             steps:
                - name: Run script on the VM
                  run: |
-                                          sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root <<EOF
+                                                      sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root <<EOF
                        echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
                        javac Main.java
                        echo 'Main-Class: Main' > manifest.txt
