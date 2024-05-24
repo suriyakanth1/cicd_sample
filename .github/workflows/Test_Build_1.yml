@@ -49,3 +49,29 @@
             env:
                 SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
                 SONAR_HOST_URL: http://158.220.107.63:9000/
+
+    #---------------- BUILD_SCRIPT
+          BUILD_SCRIPT:
+            needs: [SONARQUBE]
+            runs-on: ubuntu-latest
+            steps:
+               - name: Run script on the VM
+                 run: |
+                        sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root <<EOF
+                                                      #!/bin/bash
+                               
+                              # Step 1: Write Java source code to a file
+                              echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
+                               
+                              # Step 2: Compile Java source code
+                              javac Main.java
+                               
+                              # Step 3: Create manifest file specifying the main class
+                              echo 'Main-Class: Main' > manifest.txt
+                               
+                              # Step 4: Create JAR file using the compiled class file and manifest file
+                              jar cfm Main.jar manifest.txt Main.class
+                               
+                              # Step 5: Run the JAR file
+                              java -jar Main.jar
+                                                            EOF
