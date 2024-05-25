@@ -1,0 +1,62 @@
+        name: releas-25-3
+
+        on:
+          workflow_dispatch:
+
+
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
+                - name: Check out the repo
+                  uses: actions/checkout@v3  
+            
+
+        #---------------- Docker
+          DOCKERHUB:
+           needs: [build]
+           runs-on: ubuntu-latest
+           environment:
+              name: DEVELOPMENT
+           steps:
+             - name: Checkout code
+               uses: actions/checkout@v2
+             - name: Set up Docker Buildx
+               uses: docker/setup-buildx-action@v3
+             - name: Login to Docker Hub
+               uses: docker/login-action@v2
+               with:
+                 username: suriyakanth1
+                 password: dckr_pat_LSDYW7uqWPPYvQOrLJFEbl7oPjM
+             - name: Build and push
+               uses: docker/build-push-action@v5
+               with:
+                  push: true
+                  tags: suriyakanth1/dockerimagebuild:main
+            
+
+    #---------------- BUILD_SCRIPT
+          BUILD_SCRIPT:
+            needs: [DOCKERHUB]
+            runs-on: ubuntu-latest
+            steps:
+               - name: Run script on the VM
+                 run: |
+                       sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root <<EOF
+                                                     #!/bin/bash
+                               
+                                        # Step 1: Write Java source code to a file
+                                        echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
+                               
+                                        # Step 2: Compile Java source code
+                                        javac Main.java
+                               
+                                        # Step 3: Create manifest file specifying the main class
+                                        echo 'Main-Class: Main' > manifest.txt
+                               
+                                        # Step 4: Create JAR file using the compiled class file and manifest file
+                                        jar cfm Main.jar manifest.txt Main.class
+                               
+                                        # Step 5: Run the JAR file
+                                        java -jar Main.jar EOF
