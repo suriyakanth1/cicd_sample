@@ -34,25 +34,10 @@
                with:
                   push: true
                   tags: suriyakanth1/dockerimagebuild:main
-            
-
-    #---------------- sonarqube
-          SONARQUBE:
-            needs: [DOCKERHUB]
-            runs-on: ubuntu-latest
-            environment:
-              name: DEVELOPMENT
-            steps:
-              - uses: actions/checkout@master
-              - name: SonarQube Scan
-                uses: sonarsource/sonarqube-scan-action@master
-            env:
-                SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
-                SONAR_HOST_URL: http://158.220.107.63:9000/
  
     #---------------- Orchestration 
           ORCHESTRATION:
-            needs: [SONARQUBE]
+            needs: [DOCKERHUB]
             runs-on: ubuntu-latest
             permissions:
                actions: write
