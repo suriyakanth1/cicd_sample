@@ -58,8 +58,15 @@
                - name: Run script on the VM
                  run: |
                        sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@root <<EOF
-                                                     echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
-                              javac Main.java
-                              echo 'Main-Class: Main' > manifest.txt
-                              jar cfm Main.jar manifest.txt Main.class
-                              java -jar Main.jar  EOF
+                                                     Manifest-Version: 1.0
+                                Created-By: Maven Archiver 3.4.0
+                                Build-Jdk-Spec: 17
+                                Implementation-Title: spring-boot-crud-example-2
+                                Implementation-Version: 0.0.1-SNAPSHOT
+                                Main-Class: org.springframework.boot.loader.JarLauncher
+                                Start-Class: com.javatechie.crud.example.SpringBootCrudExample2Application
+                                Spring-Boot-Version: 2.2.4.RELEASE
+                                Spring-Boot-Classes: BOOT-INF/classes/
+                                Spring-Boot-Lib: BOOT-INF/lib/ 
+                                Class-Path: ~/projects/script_test
+                                EOF
