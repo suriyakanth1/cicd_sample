@@ -47,6 +47,5 @@
                                   apt update  
                                   apt install -y maven  
                                   cd ~/projects/script_test/javaproject/Spring-Boot-main
-                                  mvn install  
-                         EOF
+                                  mvn install EOF
 
