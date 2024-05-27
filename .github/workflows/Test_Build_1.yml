@@ -44,15 +44,18 @@
                - name: Run script on the VM
                  run: |
                               sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
-                              Manifest-Version: 1.0
-                              Created-By: Maven Archiver 3.4.0
-                              Build-Jdk-Spec: 17
-                              Implementation-Title: spring-boot-crud-example-2
-                              Implementation-Version: 0.0.1-SNAPSHOT
-                              Main-Class: org.springframework.boot.loader.JarLauncher
-                              Start-Class: com.javatechie.crud.example.SpringBootCrudExample2Application
-                              Spring-Boot-Version: 2.2.4.RELEASE
-                              Spring-Boot-Classes: BOOT-INF/classes/
-                              Spring-Boot-Lib: BOOT-INF/lib/ 
-                              Class-Path: ~/projects/script_test
-                               EOF
+                                cat > manifest.txt <<EOL
+                                Manifest-Version: 1.0
+                                Created-By: Maven Archiver 3.4.0
+                                Build-Jdk-Spec: 17
+                                Implementation-Title: spring-boot-crud-example-2
+                                Implementation-Version: 0.0.1-SNAPSHOT
+                                Main-Class: org.springframework.boot.loader.JarLauncher
+                                Start-Class: com.javatechie.crud.example.SpringBootCrudExample2Application
+                                Spring-Boot-Version: 2.2.4.RELEASE
+                                Spring-Boot-Classes: BOOT-INF/classes/
+                                Spring-Boot-Lib: BOOT-INF/lib/ 
+                                Class-Path: ~/projects/script_test
+                                EOL
+                                EOF
+
