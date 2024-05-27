@@ -54,6 +54,9 @@
           ORCHESTRATION:
             needs: [SONARQUBE]
             runs-on: ubuntu-latest
+            permissions:
+               actions: write
+               contents: read
             steps:
                - uses: trstringer/manual-approval@v1
                  with:
