@@ -44,9 +44,8 @@
                     - name: Install Maven and run script on the VM
                       run: |
                         sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
-                                  apt update  
-                                  apt install -y maven  
-                                  cd ~/projects/script_test/javaproject/Spring-Boot-main
-                                  mvn install
-                                  EOF
+                          cd ~/projects/script_test/javaproject/Spring-Boot-main
+                          mvn clean
+                        EOF
+
 
