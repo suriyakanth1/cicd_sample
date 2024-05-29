@@ -21,5 +21,7 @@
                - name: Run script on the VM
                  run: |
                    sshpass -p "root@321" ssh -o StrictHostKeyChecking=no root@10.152.5.203 <<EOF
-                                             
+                              cd ~/projects/script_test/javaproject/Spring-Boot-main 
+                              mvn clean
+                              mvn install 
                    EOF
