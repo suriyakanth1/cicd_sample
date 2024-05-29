@@ -1,0 +1,27 @@
+        name: TEST-1
+
+        on:
+          workflow_dispatch:
+
+
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
+                - name: Check out the repo
+                  uses: actions/checkout@v3  
+            
+
+    #---------------- Build Script
+          BUILD_SCRIPT:
+            needs: [build]
+            runs-on: ubuntu-latest
+            steps:
+               - name: Run script on the VM
+                 run: |
+                   sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
+                               cd ~/projects/script_test/javaproject/Spring-Boot-main
+                              mvn clean
+                              mvn install      
+                   EOF
