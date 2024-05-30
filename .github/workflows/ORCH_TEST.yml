@@ -25,5 +25,5 @@
                  with:
                    secret: ${{ secrets.GITHUB_TOKEN }}
                    approvers: suriyakanth1
-                          issue-title: "Orchestration"
+                   issue-title: "Orchestration"
                    issue-body: "run_id: ${{ github.run_id }}"
