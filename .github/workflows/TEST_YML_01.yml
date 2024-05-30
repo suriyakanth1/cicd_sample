@@ -1,0 +1,51 @@
+        name: TEST_YML_01
+
+        on:
+          workflow_dispatch:
+
+
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
+                - name: Check out the repo
+                  uses: actions/checkout@v3  
+            
+
+        #---------------- Docker
+          DOCKERHUB:
+           needs: [build]
+           runs-on: ubuntu-latest
+           environment:
+              name: DEVELOPMENT
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v3
+        - name: Login to Docker Hub
+          uses: docker/login-action@v2
+          with:
+    
+          username: null
+        password: null
+        - name: Build and push
+          uses: docker/build-push-action@v5
+          with:
+          push: true
+                  tags: null/dockerimagebuild:main
+            
+
+    #---------------- Sonarqube
+          SONARQUBE:
+            needs: [DOCKERHUB]
+            runs-on: ubuntu-latest
+            environment:
+              name: DEVELOPMENTsteps:
+              - uses: actions/checkout@master
+              - name: SonarQube Scan
+                uses: sonarsource/sonarqube-scan-action@master
+            env:
+          SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
+           SONAR_HOST_URL: http://158.220.107.63:9000/
