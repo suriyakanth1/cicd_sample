@@ -13,7 +13,7 @@
                   uses: actions/checkout@v3  
             
 
-    #---------------- BUILD_SCRIPT
+    #---------------- Build Script
           BUILD_SCRIPT:
             needs: [build]
             runs-on: ubuntu-latest
@@ -23,5 +23,5 @@
                    sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
                               cd ~/projects/script_test/javaproject/Spring-Boot-main
                               mvn clean
-                              mvn install 
+                               
                    EOF
