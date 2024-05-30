@@ -29,7 +29,7 @@
                 with:
     
                   username: ${{ secrets.DOCKER_USERNAME }}
-               password: ${{ secrets.DOCKER_ACCESSTOKEN }}
+                   password: ${{ secrets.DOCKER_ACCESSTOKEN }}
               - name: Build and push
                 uses: docker/build-push-action@v5
                 with:
