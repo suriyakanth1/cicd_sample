@@ -26,7 +26,7 @@
                           mvn install
                           EOF
                      - name: Copy JAR file to S3
-                       run: |
+                       # run: |
                             # # Install AWS CLI
                             # sudo apt update
                             # sudo apt install -y awscli
