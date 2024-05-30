@@ -21,7 +21,7 @@
                - name: Run script on the VM
                  run: |
                    sshpass -p "ClearC0de20S4" ssh -o StrictHostKeyChecking=no root@158.220.107.63 <<EOF
-                                 cd ~/projects/script_test/javaproject/Spring-Boot-main
+                              cd ~/projects/script_test/javaproject/Spring-Boot-main
                               mvn clean
                               mvn install    
                    EOF
