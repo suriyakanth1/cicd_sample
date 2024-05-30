@@ -25,3 +25,13 @@
                               mvn clean
                               mvn install 
                    EOF
+               - name: Copy JAR file to S3
+                 run: |
+                            # # Install AWS CLI
+                            # sudo apt update
+                            # sudo apt install -y awscli
+                            # # Configure AWS CLI (optional, if not pre-configured)
+                            # aws configure set aws_access_key_id YOUR_ACCESS_KEY_ID
+                            # aws configure set aws_secret_access_key YOUR_SECRET_ACCESS_KEY
+                            # # Copy the JAR file to S3
+                            # aws s3 cp /path/to/your/local/jar-file.jar s3://your-s3-bucket-name/path/in/s3/to/your-jar-file.jar
