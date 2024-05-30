@@ -29,7 +29,7 @@
           with:
     
             username: null
-                password: null
+            password: null
         - name: Build and push
           uses: docker/build-push-action@v5
           with:
