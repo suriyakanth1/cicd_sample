@@ -4,7 +4,7 @@
         on:
          workflow_dispatch:
          schedule:
-           - cron:'5 4 * * *'
+           - cron: '5 4 * * *'
   
 
         jobs:
@@ -20,8 +20,9 @@
           SONARQUBE:
             needs: [build]
             runs-on: ubuntu-latest
+             
             environment:
-              name: DEVELOPMENT
+               name:  DEVELOPMENT
             steps:
                - uses: actions/checkout@master
                - name: SonarQube Scan
