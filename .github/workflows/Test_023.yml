@@ -57,6 +57,7 @@
             environment:
               name: DEVELOPMENT
             needs: [SONARQUBE]
+            
             steps:
                - name: Checkout code
                  uses: actions/checkout@v3
