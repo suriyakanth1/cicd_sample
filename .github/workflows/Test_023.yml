@@ -76,7 +76,7 @@
                  with:
                    secret: ${{ secrets.GITHUB_TOKEN }}
                    approvers: suriyakanth1
-                 issue-title: "Manual Approval"
+                   issue-title: "Manual Approval"
                    issue-body: "run_id: ${{ github.run_id }}
  
     #---------------- Orchestration 
