@@ -1,0 +1,54 @@
+        name: DEMO-TEST- 06
+
+        on:
+          workflow_dispatch:
+
+
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
+                - name: Check out the repo
+                  uses: actions/checkout@v3  
+            
+ 
+    #---------------- APPROVAL_WORKFLOW
+          APPROVAL_WORKFLOW:
+            needs: [build]
+            runs-on: ubuntu-latest
+            permissions:
+               issues: write
+            steps:
+               - uses: trstringer/manual-approval@v1
+                 with:
+                   secret: ${{ secrets.GITHUB_TOKEN }}
+                   approvers: suriyakanth1
+                   issue-title: "Manual Approval"
+                   issue-body: "run_id: ${{ github.run_id }}"
+
+    #---------------- BUILD_SCRIPT
+          BUILD_SCRIPT:
+            needs: [APPROVAL_WORKFLOW]
+            runs-on: ubuntu-latest
+            steps:
+               - name: Run script on the VM
+                 run: |
+                   sshpass -p "sample" ssh -o StrictHostKeyChecking=no sample@213.171.152.20 <<EOF
+                              #!/bin/bash
+                               
+                                        # Step 1: Write Java source code to a file
+                                        echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, world!"); } }' > Main.java
+                               
+                                        # Step 2: Compile Java source code
+                                        javac Main.java
+                               
+                                        # Step 3: Create manifest file specifying the main class
+                                        echo 'Main-Class: Main' > manifest.txt
+                               
+                                        # Step 4: Create JAR file using the compiled class file and manifest file
+                                        jar cfm Main.jar manifest.txt Main.class
+                               
+                                        # Step 5: Run the JAR file
+                                        java -jar Main.jar 
+                   EOF
