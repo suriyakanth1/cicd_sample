@@ -1,0 +1,28 @@
+        name: TEST-SONARQUBE-DEMO-2
+
+        on:
+          workflow_dispatch:
+
+
+        jobs:
+          build:
+           name: GITHUB
+           runs-on: ubuntu-latest
+           steps:
+                - name: Check out the repo
+                  uses: actions/checkout@v3  
+            
+
+    #---------------- SONARQUBE
+          SONARQUBE:
+            needs: [build]
+            runs-on: ubuntu-latest
+            environment:
+              name: DEVELOPMENT
+            steps:
+              - uses: actions/checkout@master
+              - name: SonarQube Scan
+                uses: sonarsource/sonarqube-scan-action@master
+            env:
+                SONAR_TOKEN: squ_8c5e7438e05474ebcb879b70892d439619fe4daa
+                SONAR_HOST_URL: http://158.220.107.63:9000/
