@@ -1,2 +1,2 @@
 # cicd_sample
-test Scheduled
+test Scheduled 14-06-2024
