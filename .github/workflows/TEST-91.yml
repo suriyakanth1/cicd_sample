@@ -33,7 +33,7 @@
                uses: docker/build-push-action@v5
                with:
                   push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/undefined:main
+                  tags: ${{ secrets.DOCKER_USERNAME }}/buildtest:main
 
       #---------------- VIRTUAL_MACHINE
           VIRTUAL_MACHINE:
@@ -46,4 +46,4 @@
                  uses: actions/checkout@v3
                - name: Deploy to Linux Server
                  run: |
-                     sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IPADDRESS }} "docker pull ${{ secrets.DOCKER_USERNAME }}/buildtest:main && docker run --rm -p 3000:3000 -d ${{ secrets.DOCKER_USERNAME }}/null:main"
+                     sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IPADDRESS }} "docker pull ${{ secrets.DOCKER_USERNAME }}/buildtest:main && docker run --rm -p 3000:3000 -d ${{ secrets.DOCKER_USERNAME }}/buildtest:main"
