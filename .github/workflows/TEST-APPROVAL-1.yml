@@ -1,47 +1,49 @@
-        name: TEST-APPROVAL-1
+name: TEST-APPROVAL-1
 
-        on:
-          workflow_dispatch:
-          push:
-           paths-ignore:
-             - '.github/workflows/**'
-             - '**/Dockerfile'
-             - '**/sonar-project.properties'
-  
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - '.github/workflows/**'
+      - '**/Dockerfile'
+      - '**/sonar-project.properties'
 
-        jobs:
-          build:
-           name: GITHUB
-           runs-on: ubuntu-latest
-           steps:
-                - name: Check out the repo
-                  uses: actions/checkout@v3  
-            
- 
-    #---------------- APPROVAL_WORKFLOW
-          APPROVAL_WORKFLOW:
-            needs: [build]
-            runs-on: ubuntu-latest
-            permissions:
-               issues: write
-            steps:
-               - uses: trstringer/manual-approval@v1
-                 with:
-                   secret: ${{ secrets.GITHUB_TOKEN }}
-                   approvers: suriyakanth1
-                   issue-title: "Manual Approval"
-                   issue-body: "run_id: ${{ github.run_id }}"
- 
-    #---------------- ORCHESTRATION
-          ORCHESTRATION:
-            needs: [APPROVAL_WORKFLOW]
-            runs-on: ubuntu-latest
-            permissions:
-               issues: write
-            steps:
-               - uses: trstringer/manual-approval@v1
-                 with:
-                   secret: ${{ secrets.GITHUB_TOKEN }}
-                   approvers: suriyakanth1
-                   issue-title: "Orchestration"
-                   issue-body: "run_id: ${{ github.run_id }}"
+jobs:
+  build:
+    name: GITHUB
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3  
+
+  orchestration-part-1:
+    needs: [build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    permissions:
+      issues: write
+    steps:
+      - uses: trstringer/manual-approval@v1
+        id: approval
+        with:
+          secret: ${{ secrets.GITHUB_TOKEN }}
+          approvers: suriyakanth1
+          issue-title: "Orchestration Part 1 and 2"
+          issue-body: "run_id: ${{ github.run_id }}"
+      # Add your steps for part 1 here
+
+  orchestration-part-2:
+    needs: [orchestration-part-1]
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    permissions:
+      issues: write
+    steps:
+      - name: Wait for approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ secrets.GITHUB_TOKEN }}
+          approvers: suriyakanth1
+          issue-title: "Orchestration Part 1 and 2"
+          issue-body: "Continuing run_id: ${{ github.run_id }}"
+      # Add your steps for part 2 here
