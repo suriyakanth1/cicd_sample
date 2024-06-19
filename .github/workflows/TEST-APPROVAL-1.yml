@@ -2,7 +2,6 @@ name: TEST-APPROVAL-1
 
 on:
   workflow_dispatch:
-  push:
     paths-ignore:
       - '.github/workflows/**'
       - '**/Dockerfile'
